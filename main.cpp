@@ -1,0 +1,133 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+static const int MAX_SPACES = 40;
+
+// -------------------------------
+// Data class
+// -------------------------------
+class MonopolySpace {
+public:
+    string propertyName;
+    string propertyColor;
+    int value;
+    int rent;
+
+    MonopolySpace() {
+        propertyName = "";
+        propertyColor = "";
+        value = 0;
+        rent = 0;
+    }
+
+    MonopolySpace(string name, string color, int val, int r) {
+        propertyName = name;
+        propertyColor = color;
+        value = val;
+        rent = r;
+    }
+
+    void print() {
+        // TODO: Implement print
+        cout << propertyName << " (" << propertyColor << ")";
+    }
+};
+
+// -------------------------------
+// Node class
+// -------------------------------
+template <typename T>
+class Node {
+public:
+    T data;
+    Node<T>* nextNode;
+
+    Node(T value) {
+        data = value;
+        nextNode = nullptr;
+    }
+};
+
+// -------------------------------
+// Circular Linked List class
+// -------------------------------
+template <typename T>
+class CircularLinkedList {
+private:
+    Node<T>* headNode;
+    Node<T>* tailNode;
+    Node<T>* playerNode;
+    int nodeCount;
+    int passGoCount;
+
+public:
+    CircularLinkedList() {
+        headNode = nullptr;
+        tailNode = nullptr;
+        playerNode = nullptr;
+        nodeCount = 0;
+        passGoCount = 0;
+    }
+
+    // Core A
+    bool addSpace(T value) {
+        // TODO: Implement addSpace
+        return false;
+    }
+
+    // Core B
+    int addMany(vector<T> values) {
+        // TODO: Implement addMany
+        return 0;
+    }
+
+    // Core C
+    void movePlayer(int steps) {
+        // TODO: Implement movePlayer
+    }
+
+    int getPassGoCount() {
+        return passGoCount;
+    }
+
+    // Core D
+    void printFromPlayer(int count) {
+        // TODO: Implement printFromPlayer
+    }
+
+    // Advanced Option A
+    bool removeByName(string name) {
+        // TODO: Implement removeByName
+        return false;
+    }
+
+    vector<string> findByColor(string color) {
+        // TODO: Implement findByColor
+        return {};
+    }
+
+    void clear() {
+        // TODO: Implement destructor logic
+    }
+};
+
+// -------------------------------
+// Main
+// -------------------------------
+int main() {
+    srand(static_cast<unsigned>(time(nullptr)));
+
+    CircularLinkedList<MonopolySpace> board;
+
+    // TODO: Build the board
+    cout << "Monopoly Simulator Initialized." << endl;
+
+    // TODO: Playable loop
+
+    return 0;
+}
