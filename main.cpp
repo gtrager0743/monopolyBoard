@@ -31,10 +31,14 @@ public:
         value = val;
         rent = r;
     }
+    bool isEqual(MonopolySpace other)
+    {
+        return (propertyName == other.propertyName);
+    }
 
-    void print() {
-        // TODO: Implement print
-        cout << propertyName << " (" << propertyColor << ")";
+    void print()
+    {
+        cout << propertyName << " | " << propertyColor << " | $" << value << " | Rent $" << rent;
     }
 };
 
