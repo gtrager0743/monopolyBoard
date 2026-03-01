@@ -79,9 +79,31 @@ public:
     }
 
     // Core A
-    bool addSpace(T value) {
-        // TODO: Implement addSpace
-        return false;
+    bool addSpace(T value)
+    {
+        if (nodeCount >= MAX_SPACES)
+            {
+            return false;
+        }
+
+        Node<T>* newNode = new Node<T>(value);
+
+        if (headNode == nullptr)
+            {
+            headNode = newNode;
+            tailNode = newNode;
+            playerNode = newNode;
+            newNode->nextNode = headNode;
+        }
+        else
+        {
+            tailNode->nextNode = newNode;
+            tailNode = newNode;
+            tailNode->nextNode = headNode;
+        }
+
+        nodeCount++;
+        return true;
     }
 
     // Core B
