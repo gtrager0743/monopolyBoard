@@ -107,9 +107,21 @@ public:
     }
 
     // Core B
-    int addMany(vector<T> values) {
-        // TODO: Implement addMany
-        return 0;
+    int addMany(vector<T> values)
+    {
+        int addedCount = 0;
+        for (const T& value : values)
+        {
+            if (addSpace(value))
+            {
+                addedCount++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        return addedCount;
     }
 
     // Core C

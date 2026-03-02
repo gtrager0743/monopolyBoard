@@ -10,8 +10,16 @@
 
 ---
 
-## Entry 2
-**Date:** **Entry Type:** **Task worked on:** **Issue or decision:** **Error message / symptom:** **What I tried:** **Fix / resolution:** ---
+### Entry 2
+**Date:** 2026-03-02  
+**Entry Type:** Edge Case / Testing Entry  
+**Task worked on:** Implementing `addMany` and enforcing board capacity.  
+**Issue or decision:** Ensuring the board won't add more than 40 spaces without breaking the circular link.  
+**Error message / symptom (if applicable):** N/A
+**What I tried:** I tested the `addMany` function by trying to pass 45 dummy spaces to see if the game would break. 
+**Fix / resolution (or final decision):** The `addSpace` method correctly returned `false` on the 41st space. The `addMany` loop caught this `false` return, stopped iterating, and returned `40`. The circular pointers remained fully intact additionally.
+
+---
 
 ## Entry 3
 **Date:** **Entry Type:** **Task worked on:** **Issue or decision:** **Error message / symptom:** **What I tried:** **Fix / resolution:** ---
