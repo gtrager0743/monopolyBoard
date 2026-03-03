@@ -125,8 +125,20 @@ public:
     }
 
     // Core C
-    void movePlayer(int steps) {
-        // TODO: Implement movePlayer
+    void movePlayer(int steps)
+    {
+        if (playerNode == nullptr)
+        {
+            return;
+        }
+        for (int i = 0; i < steps; i++)
+        {
+            if (playerNode == tailNode)
+            {
+                passGoCount++;
+            }
+            playerNode = playerNode->nextNode;
+        }
     }
 
     int getPassGoCount() {
