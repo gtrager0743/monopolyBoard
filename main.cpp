@@ -146,8 +146,21 @@ public:
     }
 
     // Core D
-    void printFromPlayer(int count) {
-        // TODO: Implement printFromPlayer
+    void printFromPlayer(int count)
+    {
+        if (playerNode == nullptr || count <= 0)
+        {
+            return;
+        }
+
+        Node<T>* current = playerNode;
+
+        for (int i = 0; i < count; i++)
+        {
+            current->data.print();
+            cout << endl;
+            current = current->nextNode;
+        }
     }
 
     // Advanced Option A
