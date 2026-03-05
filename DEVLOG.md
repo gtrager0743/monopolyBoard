@@ -30,9 +30,14 @@
 **What I tried:** Checking for nullptr to end the loop but that didn't end up working since the tail always points back to head. No nulls exist once the board is built.  
 **Fix / resolution:** Switched to a strict for loop instead. Relying entirely on the count parameter to stop. Also added a quick if (playerNode == nullptr) at the very beginning. Prevents crashing if called on an empty board.
 
-## Entry 4
-**Date:** **Entry Type:** **Task worked on:** **Issue or decision:** **Error message / symptom:** **What I tried:** **Fix / resolution:** ---
-*(Add more entries as you progress)*
+### Entry 4
+**Date:** 2026-03-05  
+**Entry Type:** Bug Fix / Edge Case 
+**Task worked on:** removeByName function  
+**Issue or decision:** What happens if the player is standing on the space being deleted?  
+**Error message / symptom:** Dangling pointer. Game crashes when trying to move the player after their space is gone.  
+**What I tried:** Originally just deleted the node and patched the head/tail links. Need to deal with the player cursor.
+**Fix / resolution:** Added a check before calling delete. If playerNode == curr, bump the player forward one space.
 
 ## Entry 5
 **Date:** **Entry Type:** **Task worked on:** **Issue or decision:** **Error message / symptom:** **What I tried:** **Fix / resolution:** ---

@@ -164,9 +164,66 @@ public:
     }
 
     // Advanced Option A
-    bool removeByName(string name) {
-        // TODO: Implement removeByName
-        return false;
+    bool removeByName(string name)
+    {
+        if (headNode == nullptr)
+        {
+            return false;
+        }
+
+        Node<T>* curr = headNode;
+        Node<T>* prev = tailNode;
+        bool found = false;
+
+        for (int i = 0; i < nodeCount; i++)
+        {
+            if (curr->data.propertyName == name)
+            {
+                found = true;
+                break;
+            }
+            prev = curr;
+            curr = curr->nextNode;
+        }
+
+        if (!found)
+        {
+            return false;
+        }
+
+        if (playerNode == curr)
+        {
+            if (nodeCount == 1)
+            {
+                playerNode = nullptr;
+            }
+            else
+            {
+                playerNode = curr->nextNode;
+            }
+        }
+
+        if (nodeCount == 1)
+        {
+            headNode = nullptr;
+            tailNode = nullptr;
+        }
+        else
+        {
+            prev->nextNode = curr->nextNode;
+            if (curr == headNode)
+            {
+                headNode = curr->nextNode;
+            }
+            if (curr == tailNode)
+            {
+                tailNode = prev;
+            }
+        }
+
+        delete curr;
+        nodeCount--;
+        return true;
     }
 
     vector<string> findByColor(string color) {
