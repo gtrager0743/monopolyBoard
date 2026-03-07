@@ -82,14 +82,14 @@ public:
     bool addSpace(T value)
     {
         if (nodeCount >= MAX_SPACES)
-            {
+        {
             return false;
         }
 
         Node<T>* newNode = new Node<T>(value);
 
         if (headNode == nullptr)
-            {
+        {
             headNode = newNode;
             tailNode = newNode;
             playerNode = newNode;
@@ -109,19 +109,21 @@ public:
     // Core B
     int addMany(vector<T> values)
     {
-        int addedCount = 0;
-        for (const T& value : values)
+        int added = 0;
+
+        for (int i = 0; i < values.size(); i++)
         {
-            if (addSpace(value))
+            if (addSpace(values[i]))
             {
-                addedCount++;
+                added++;
             }
             else
             {
                 break;
             }
         }
-        return addedCount;
+
+        return added;
     }
 
     // Core C
@@ -226,9 +228,27 @@ public:
         return true;
     }
 
-    vector<string> findByColor(string color) {
-        // TODO: Implement findByColor
-        return {};
+    vector<string> findByColor(string color)
+    {
+        vector<string> matches;
+
+        if (headNode == nullptr)
+        {
+            return matches;
+        }
+
+        Node<T>* curr = headNode;
+
+        for (int i = 0; i < nodeCount; i++)
+        {
+            if (curr->data.propertyColor == color)
+            {
+                cout << curr->data.propertyName << endl;
+            }
+            curr = curr->nextNode;
+        }
+
+        return matches;
     }
 
     void clear() {
