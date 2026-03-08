@@ -38,7 +38,7 @@ public:
 
     void print()
     {
-        cout << propertyName << " | " << propertyColor << " | $" << value << " | Rent $" << rent;
+        cout << propertyName << ", " << propertyColor << ", $" << value << ": Rent $" << rent << endl;
     }
 };
 
@@ -86,6 +86,7 @@ public:
             return false;
         }
 
+
         Node<T>* newNode = new Node<T>(value);
 
         if (headNode == nullptr)
@@ -103,14 +104,15 @@ public:
         }
 
         nodeCount++;
+
         return true;
     }
 
     // Core B
     int addMany(vector<T> values)
     {
-        int added = 0;
 
+        int added = 0;
         for (int i = 0; i < values.size(); i++)
         {
             if (addSpace(values[i]))
@@ -122,6 +124,7 @@ public:
                 break;
             }
         }
+
 
         return added;
     }
@@ -150,7 +153,11 @@ public:
     // Core D
     void printFromPlayer(int count)
     {
-        if (playerNode == nullptr || count <= 0)
+        if (playerNode == nullptr)
+        {
+            return;
+        }
+        if (count <= 0)
         {
             return;
         }
@@ -281,15 +288,62 @@ public:
 // -------------------------------
 // Main
 // -------------------------------
-int main() {
-    srand(static_cast<unsigned>(time(nullptr)));
+int rolls()
+{
+    return (rand() % 6 + 1) +
+        (rand() % 6 + 1);
+}
+
+int main()
+{
+srand(static_cast<unsigned>(time(nullptr)));
+
+
 
     CircularLinkedList<MonopolySpace> board;
 
-    // TODO: Build the board
-    cout << "Monopoly Simulator Initialized." << endl;
+    board.addSpace(MonopolySpace("GO", "None", 0, 0));
 
-    // TODO: Playable loop
+
+    vector<MonopolySpace> spaces(39);
+    string colors[8] = {"Brown", "Light Blue", "Pink", "Orange", "Red", "Yellow", "Green", "Dark Blue"};
+
+    for (int i = 0; i < 39; i++)
+    {
+        string name = "Property " + to_string(i + 1);
+
+
+    int rent = i * 2; int value = i * 10;
+
+        int colorIndex = i / 5;
+        if (colorIndex > 7)
+        {
+            colorIndex = 7;
+        }
+
+        spaces[i] = MonopolySpace(name, colors[colorIndex], value, rent);
+    }
+
+    board.addMany(spaces);
+
+    int roll = 0;
+    cout << "Monopoly Simulator Initialized." << endl;
+    for (int turn = 1; turn <= 10; turn++)
+    {
+    roll = rolls();
+
+        cout << "turn " << turn << ": Rolled: " << roll << endl;
+
+        board.movePlayer(roll);
+
+        cout << "current position + preview of next 2 spaces" << endl;
+        board.printFromPlayer(3);
+
+        cout << "times passed GO so far is " << board.getPassGoCount() << endl;
+        cout << "-----------------------------------" << endl;
+    }
+
+    board.clear();
 
     return 0;
 }

@@ -55,9 +55,9 @@
 
 ### Entry 6
 **Date:** 2026-03-07  
-**Entry Type:** Engineering Decision / Bug Fix  
+**Entry Type:** Bug Fix  
 **Task worked on:** cleanup issues with clear.  
 **Issue or decision:** how to delete a circular list without infinite loops or crashing.  
 **Error message / symptom:** Errors when deleting a node that is still pointed to by the tail.  
 **What I tried:** thought about using a for loop with nodeCount again, but I realized there was a simpler way to do it.  
-**Fix / resolution:** I set tailNode->nextNode = nullptr. this breaks the circle for the linked list, and turns it back into a normal linked list. Then I used a while loop to delete each node safely.
+**Fix / resolution:** I set tailNode->nextNode = nullptr. this breaks the circle for the linked list, and turns it back into a normal linked list. then I used a while loop to delete each node safely.
