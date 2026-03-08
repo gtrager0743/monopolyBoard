@@ -251,8 +251,30 @@ public:
         return matches;
     }
 
-    void clear() {
-        // TODO: Implement destructor logic
+    void clear()
+    {
+        if (headNode == nullptr)
+        {
+            return;
+        }
+
+        tailNode->nextNode = nullptr;
+        Node<T>* next = nullptr;
+        Node<T>* curr = headNode;
+
+
+        while (curr != nullptr)
+        {
+            next = curr->nextNode;
+            delete curr;
+            curr = next;
+        }
+
+        headNode = nullptr;
+        tailNode = nullptr;
+        playerNode = nullptr;
+        nodeCount = 0;
+        passGoCount = 0;
     }
 };
 

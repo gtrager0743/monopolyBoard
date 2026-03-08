@@ -37,7 +37,7 @@
 **Entry Type:** Bug Fix / Edge Case 
 **Task worked on:** removeByName function  
 **Issue or decision:** What happens if the player is standing on the space being deleted 
-**Error message / symptom:** Dangling pointer. Game crashes when trying to move the player after their space is gone.  
+**Error message / symptom:** dangling pointer, game crashes when trying to move the player after their space is gone.  
 **What I tried:** Originally just deleted the node and patched the head/tail links, but I need to deal with the player cursor.
 **Fix / resolution:** Added a check before calling delete. If playerNode == curr, bump the player forward one space.
 
@@ -49,10 +49,15 @@
 **Task worked on:** findByColor function.  
 **Issue or decision:** return vector with results or print results (as stated in the rubric).  
 **Decision:** Chose to print the names directly inside the loop. Used a simple for loop up to nodeCount.  
-**Reasoning:** Much simpler than dealing with vector memory. The loop ensures we check every node exactly one time.
+**Reasoning:** Much simpler than dealing with vectors. The loop ensures we check every node exactly one time.
 
 ---
 
-## Entry 6
-**Date:** **Entry Type:** **Task worked on:** **Issue or decision:** **Error message / symptom:** **What I tried:** **Fix / resolution:** ---
-*(Add more entries as you progress)*
+### Entry 6
+**Date:** 2026-03-07  
+**Entry Type:** Engineering Decision / Bug Fix  
+**Task worked on:** cleanup issues with clear.  
+**Issue or decision:** how to delete a circular list without infinite loops or crashing.  
+**Error message / symptom:** Errors when deleting a node that is still pointed to by the tail.  
+**What I tried:** thought about using a for loop with nodeCount again, but I realized there was a simpler way to do it.  
+**Fix / resolution:** I set tailNode->nextNode = nullptr. this breaks the circle for the linked list, and turns it back into a normal linked list. Then I used a while loop to delete each node safely.
