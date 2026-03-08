@@ -101,6 +101,7 @@ public:
             tailNode->nextNode = newNode;
             tailNode = newNode;
             tailNode->nextNode = headNode;
+            // this closes the circular linked list back up
         }
 
         nodeCount++;
@@ -122,6 +123,7 @@ public:
             else
             {
                 break;
+                // addspace returns false once our 40 space limit is hit, this ends our loop for addMany if that happens
             }
         }
 
@@ -141,6 +143,7 @@ public:
             if (playerNode == tailNode)
             {
                 passGoCount++;
+                // if we hit the tail node and still have more spaces to move, that means were about to pass GO
             }
             playerNode = playerNode->nextNode;
         }
@@ -161,7 +164,8 @@ public:
         {
             return;
         }
-
+        // right here a temporary pointer is created and used to iterate through spaces for printing
+        // this is so the actual player pointer can remain in its current position
         Node<T>* current = playerNode;
 
         for (int i = 0; i < count; i++)
@@ -175,6 +179,7 @@ public:
     // Advanced Option A
     bool removeByName(string name)
     {
+        // to check circular linked list integrity
         if (headNode == nullptr)
         {
             return false;
@@ -191,6 +196,7 @@ public:
                 found = true;
                 break;
             }
+            // if we always move both pointers forward together then we can ensure that prev always stays exactly one step behind curr
             prev = curr;
             curr = curr->nextNode;
         }
@@ -209,6 +215,7 @@ public:
             else
             {
                 playerNode = curr->nextNode;
+                // this will move the player off of the current node if the current node is the one being deleted
             }
         }
 
@@ -219,6 +226,7 @@ public:
         }
         else
         {
+            // routing node pointers around the gap created by deleting a node
             prev->nextNode = curr->nextNode;
             if (curr == headNode)
             {
@@ -245,7 +253,7 @@ public:
         }
 
         Node<T>* curr = headNode;
-
+        // this loop checks every node exactly once without geting stuck in an infinite loop
         for (int i = 0; i < nodeCount; i++)
         {
             if (curr->data.propertyColor == color)
@@ -264,7 +272,7 @@ public:
         {
             return;
         }
-
+        // by setting the tailNodes pointer to null, we break the circular nature of the linked list so we can delete spaces safely one by one
         tailNode->nextNode = nullptr;
         Node<T>* next = nullptr;
         Node<T>* curr = headNode;
@@ -314,7 +322,7 @@ srand(static_cast<unsigned>(time(nullptr)));
 
 
     int rent = i * 2; int value = i * 10;
-
+        // by dividing the assignment of colors like this, specific batches of adjacent spaces will have the same color just like real monopoly
         int colorIndex = i / 5;
         if (colorIndex > 7)
         {
